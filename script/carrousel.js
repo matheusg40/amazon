@@ -1,5 +1,5 @@
 
-let containerImgs = document.querySelector(".vitrine-galeria");
+var containerImgs = document.querySelector(".vitrine-galeria");
 let imgs = document.querySelectorAll('.vitrine-galeria img');
 let initialScroll = 0;
 
@@ -9,19 +9,26 @@ let scrollSpd = 10;
 let vitrineGaleriaWraper = document.querySelector('.vitrine-galeria-wraper');
 
  
+//onde a gente quer chega menos o atual e fazer com que pare em cada um
+
+
+
 vitrineGaleriaWraper.style.width=(imgs.length * 100) + '%';
     for(let i = 0; i<imgs.length; i++){
             imgs[i].style.width = (100/imgs.length)+'%';
         
     }
 
-    let startTime = 5;
+    let startTime = 3;
 
-        setTimeout(function(){
-                startCarrousel();
-        }, startTime*1000);
+        startCarrousel();
 
-        function startCarrousel(){
+    function startCarrousel(){
+                setTimeout(function(){
+                        runCarrousel();
+                }, startTime*1000);
+        }
+        function runCarrousel(){
                 var interval = setInterval(function(){
                         initialScroll-=scrollSpd;
                         for(let i = 0; i<imgs.length; i++){
@@ -29,7 +36,10 @@ vitrineGaleriaWraper.style.width=(imgs.length * 100) + '%';
                             
                         }
                         if(initialScroll <= -targetWidth){
+                        
+                                                      
                                 clearInterval(interval);
+                                startCarrousel();
                         }
 
                 },0.5);

@@ -41,6 +41,8 @@
     /* fim boot */
 
     header{
+        position: relative;
+        z-index: 10;
         height: 70px;
         background-color: #131921;
         color:white;
@@ -136,7 +138,7 @@
     .vitrine-galeria{
         position: absolute;
         left: 0;
-        top: 0;
+        top: 69px;
         width: 100%;
         overflow-x:hidden;
     }
